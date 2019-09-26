@@ -8,6 +8,7 @@
 
 import UIKit
 
+
 class ViewController: UIViewController {
 
     override func viewDidLoad() {
@@ -15,24 +16,21 @@ class ViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
 
-    var numberOnLabel:Double = 0;
-    var previousNumber:Double = 0;
-    var calculate:Bool = false;
-    var operation:Double = 0;
+    var calculator = Calculator();
     
     @IBOutlet weak var label: UILabel!
     
     @IBAction func numbers(_ sender: UIButton) {
-        if calculate == true
+        if calculator.calculate == true
         {
             label.text = String(sender.tag-1)
-            numberOnLabel = Double(label.text!)!
-            calculate = false
+            calculator.numberOnLabel = Double(label.text!)!
+            calculator.calculate = false
         }
         else
         {
             label.text = label.text! + String(sender.tag-1)
-            numberOnLabel = Double(label.text!)!
+            calculator.numberOnLabel = Double(label.text!)!
         }
         
     }
@@ -40,7 +38,7 @@ class ViewController: UIViewController {
     @IBAction func buttons(_ sender: UIButton) {
         if label.text != "" && sender.tag != 11 && sender.tag != 16
         {
-            previousNumber = Double(label.text!)!
+            calculator.previousNumber = Double(label.text!)!
             if sender.tag == 12
             {
                 label.text = "/"
@@ -57,35 +55,17 @@ class ViewController: UIViewController {
             {
                 label.text = "+"
             }
-            operation = Double(sender.tag)
-            calculate = true;
+            calculator.operation = Double(sender.tag)
+            calculator.calculate = true;
             
         }
         else if sender.tag == 16
         {
-            if operation == 12
-            {
-                label.text = String(previousNumber / numberOnLabel)
-            }
-            else if operation == 13
-            {
-                label.text = String(previousNumber * numberOnLabel)
-            }
-            else if operation == 14
-            {
-                label.text = String(previousNumber - numberOnLabel)
-            }
-            else if operation == 15
-            {
-                label.text = String(previousNumber + numberOnLabel)
-            }
+            label.text = calculator.eval();
         }
         else if sender.tag == 11{
             label.text = ""
-            previousNumber = 0;
-            numberOnLabel = 0;
-            operation = 0;
-            calculate = false;
+            calculator.clear();
         }
     }
 }
