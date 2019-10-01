@@ -12,7 +12,7 @@ import Alamofire
 class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     @IBOutlet weak var tableView: UITableView!
     
-    var result: [String] = Joke.categories
+    var result: [Post] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,16 +20,27 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
         tableView.delegate = self
         tableView.dataSource = self
         
-        downloadCategories()
+        downloadPosts()
     }
     
-    func downloadCategories() {
-        Joke.downloadCategories { [weak self] categories in
-            guard let self = self else { return }
-            
-            self.result = categories
-            self.tableView.reloadData()
-        }
+    func downloadPosts() {
+        let url = URL(string: "https://jsonplaceholder.typicode.com/posts")!
+        
+        var request = try! URLRequest(url: url, method: .get)
+        
+        request.setValue("application/json", forHTTPHeaderField: "accept")
+        
+        Alamofire.request(request).responseData(completionHandler: { response in
+            switch response.result {
+            case .failure(let error):
+                print(error)
+            case .success(let data):
+                let decoder = JSONDecoder()
+                let posts = try! decoder.decode([Post].self, from: data)
+                self.result = posts
+                self.tableView.reloadData()
+            }
+        })
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -38,7 +49,7 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
         
         let cell = tableView.cellForRow(at: indexPath) as! TitleTableViewCell
         
-        vc.category = cell.titleLabel.text!
+        vc.post = result[indexPath.row]
         
         self.present(vc, animated: true, completion: nil)
     }
@@ -50,7 +61,7 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "tabelViewCell", for: indexPath) as! TitleTableViewCell
         
-        cell.titleLabel.text = result[indexPath.row]
+        cell.titleLabel.text = result[indexPath.row].title
         
         return cell
     }

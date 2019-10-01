@@ -14,21 +14,33 @@ class SecondViewController: UIViewController {
     @IBOutlet weak var titleLabel: UILabel!
     
     // MARK: - Variables
-    var category: String = ""
+    var post: Post?
     
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        downloadJoke()
+        
+        downloadPost(id: post!.id)
     }
     
     // MARK: - Methods
-    func downloadJoke() {
-        Joke.downloadJoke(for: category) { [weak self] joke in
-            guard let self = self else { return }
-            
-            self.titleLabel.text = joke.value
-        }
+    func downloadPost(id: Int) {
+        let url = URL(string: "https://jsonplaceholder.typicode.com/posts/" + String(id) + "/")!
+        
+        var request = try! URLRequest(url: url, method: .get)
+        
+        request.setValue("application/json", forHTTPHeaderField: "accept")
+        
+        Alamofire.request(request).responseData(completionHandler: { response in
+            switch response.result {
+            case .failure(let error):
+                print(error)
+            case .success(let data):
+                let decoder = JSONDecoder()
+                let post = try! decoder.decode(Post.self, from: data)
+                self.post = post
+                self.titleLabel.text = self.post?.body
+            }
+        })
     }
 }

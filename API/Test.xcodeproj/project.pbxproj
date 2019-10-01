@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		2ECDDE063FF34A80399D5CF1 /* Pods_Test.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1E3AFE9B77FF0037006654B8 /* Pods_Test.framework */; };
+		820ED1AC23438794003FDBBC /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 820ED1AB23438794003FDBBC /* Post.swift */; };
 		F45DE0EE23339300005D0BD6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F45DE0ED23339300005D0BD6 /* AppDelegate.swift */; };
 		F45DE0F023339300005D0BD6 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F45DE0EF23339300005D0BD6 /* ViewController.swift */; };
 		F45DE0F323339300005D0BD6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F45DE0F123339300005D0BD6 /* Main.storyboard */; };
@@ -15,12 +16,12 @@
 		F45DE0F823339304005D0BD6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F45DE0F623339304005D0BD6 /* LaunchScreen.storyboard */; };
 		F45DE10223339B84005D0BD6 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F45DE10123339B84005D0BD6 /* SecondViewController.swift */; };
 		F45DE10423339EB6005D0BD6 /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F45DE10323339EB6005D0BD6 /* TableViewCell.swift */; };
-		F4A365A7233BAB49008ED094 /* Joke.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4A365A6233BAB49008ED094 /* Joke.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		1E3AFE9B77FF0037006654B8 /* Pods_Test.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Test.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5F7FC78343D4622580D8723B /* Pods-Test.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Test.debug.xcconfig"; path = "Target Support Files/Pods-Test/Pods-Test.debug.xcconfig"; sourceTree = "<group>"; };
+		820ED1AB23438794003FDBBC /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 		EC17EC5E309186E06E8C0838 /* Pods-Test.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Test.release.xcconfig"; path = "Target Support Files/Pods-Test/Pods-Test.release.xcconfig"; sourceTree = "<group>"; };
 		F45DE0EA23339300005D0BD6 /* Test.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Test.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F45DE0ED23339300005D0BD6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -31,7 +32,6 @@
 		F45DE0F923339304005D0BD6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F45DE10123339B84005D0BD6 /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
 		F45DE10323339EB6005D0BD6 /* TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
-		F4A365A6233BAB49008ED094 /* Joke.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Joke.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -92,7 +92,7 @@
 				F45DE0F923339304005D0BD6 /* Info.plist */,
 				F45DE10123339B84005D0BD6 /* SecondViewController.swift */,
 				F45DE10323339EB6005D0BD6 /* TableViewCell.swift */,
-				F4A365A6233BAB49008ED094 /* Joke.swift */,
+				820ED1AB23438794003FDBBC /* Post.swift */,
 			);
 			path = Test;
 			sourceTree = "<group>";
@@ -213,10 +213,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				F45DE10223339B84005D0BD6 /* SecondViewController.swift in Sources */,
-				F4A365A7233BAB49008ED094 /* Joke.swift in Sources */,
 				F45DE10423339EB6005D0BD6 /* TableViewCell.swift in Sources */,
 				F45DE0F023339300005D0BD6 /* ViewController.swift in Sources */,
 				F45DE0EE23339300005D0BD6 /* AppDelegate.swift in Sources */,
+				820ED1AC23438794003FDBBC /* Post.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
